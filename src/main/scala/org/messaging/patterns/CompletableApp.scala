@@ -20,7 +20,7 @@ class CompletableApp(val steps: Int) extends App {
   def awaitCanStartStartNow() =
     canStart.await()
 
-  def awaitCompletiton() = {
+  def awaitCompletion() = {
     completition.await()
 
     CoordinatedShutdown(system).run() foreach { _ =>
@@ -44,7 +44,7 @@ class CompletableApp(val steps: Int) extends App {
 }
 
 object NoStepsDriver extends CompletableApp(0) {
-  awaitCompletiton()
+  awaitCompletion()
 
   println("NoStepsDriver: is completed.")
 }
