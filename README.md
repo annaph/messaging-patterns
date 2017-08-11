@@ -2,11 +2,16 @@
 
 Reactive messaging patterns using Scala and Akka.
 
+### Message types
+1. _Command message_
+2. _Event message_
+3. _Document message_
 
-1. Pipes and Filters - `org.messaging.patterns.pipes`<br />
+### Patterns
+1. **Pipes and Filters** - `org.messaging.patterns.pipes`<br />
 ![Alt text](img/pipes_and_filters.png?raw=true)<br />
 
-2. Message Router - `org.messaging.patterns.router`<br />
+2. **Message Router** - `org.messaging.patterns.router`<br />
 ![Alt text](img/message_router.png?raw=true)<br />
 
 3. ???
