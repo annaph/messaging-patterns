@@ -1,6 +1,6 @@
 name := "messaging-patterns"
 
-version := "org.messaging.patterns"
+organization := "org.messaging.patterns"
 
 scalaVersion := "2.12.3"
 
