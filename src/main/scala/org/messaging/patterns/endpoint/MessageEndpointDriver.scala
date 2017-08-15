@@ -24,7 +24,7 @@ object MessageEndpointDriver extends CompletableApp(3) {
 
   awaitCompletion()
 
-  println("MessageEndpointDriver: is completed")
+  println("MessageEndpointDriver: is completed.")
 }
 
 class HighSierraPriceQuotes(discounter: ActorRef) extends Actor {

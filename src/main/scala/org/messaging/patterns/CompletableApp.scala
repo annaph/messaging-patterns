@@ -14,13 +14,13 @@ class CompletableApp(val steps: Int) extends App {
 
   val system = ActorSystem("ReactiveEnterprise")
 
-  def awaitCanCompleteNow() =
+  def awaitCanCompleteNow(): Unit =
     canComplete.await()
 
-  def awaitCanStartStartNow() =
+  def awaitCanStartStartNow(): Unit =
     canStart.await()
 
-  def awaitCompletion() = {
+  def awaitCompletion(): Unit = {
     completition.await()
 
     CoordinatedShutdown(system).run() foreach { _ =>
@@ -28,18 +28,18 @@ class CompletableApp(val steps: Int) extends App {
     }
   }
 
-  def canCompleteNow() =
+  def completeNow(): Unit =
     canComplete.countDown()
 
-  def canStartNow() =
+  def startNow(): Unit =
     canStart.countDown()
 
-  def completeAll() =
+  def completeAll(): Unit =
     while (completition.getCount > 0) {
       completition.countDown()
     }
 
-  def completedStep() =
+  def completedStep(): Unit =
     completition.countDown()
 }
 
