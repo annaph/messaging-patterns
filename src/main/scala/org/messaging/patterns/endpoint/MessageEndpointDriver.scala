@@ -1,10 +1,17 @@
 package org.messaging.patterns.endpoint
 
 import akka.actor.{Actor, ActorRef, Props}
+import akka.pattern.ask
+import akka.util.Timeout
 import org.messaging.patterns.CompletableApp
 import org.messaging.patterns.endpoint.MessageEndpoint._
 
+import scala.concurrent.duration.DurationInt
+import scala.language.postfixOps
+
 object MessageEndpointDriver extends CompletableApp(3) {
+  implicit val timeout = Timeout(12 seconds)
+
   val discounter = system.actorOf(
     Props[ItemDiscountCalculator],
     "discounter")
@@ -13,7 +20,7 @@ object MessageEndpointDriver extends CompletableApp(3) {
     Props(classOf[HighSierraPriceQuotes], discounter),
     "endpoint")
 
-  endpoint ! RequestPriceQuote(1, 2, 3)
+  endpoint ? RequestPriceQuote(1, 2, 3)
 
   awaitCompletion()
 
@@ -21,7 +28,7 @@ object MessageEndpointDriver extends CompletableApp(3) {
 }
 
 class HighSierraPriceQuotes(discounter: ActorRef) extends Actor {
-  val quoterId = self.path.name
+  val quoterId: String = self.path.name
 
   override def receive: Receive = {
     case rpq: RequestPriceQuote =>

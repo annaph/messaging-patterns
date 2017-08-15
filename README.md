@@ -17,4 +17,7 @@ Reactive messaging patterns using Scala and Akka.
 3. **Message Translator** - `org.messaging.patterns.translator`<br />
 ![Alt text](img/message_translator.png?raw=true)<br />
 
-4. ???
+4. **Message Endpoint** - `org.messaging.patterns.endpoint`<br />
+![Alt text](img/message_endpoint.png?raw=true)<br />
+
+5. ???
