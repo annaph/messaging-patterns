@@ -9,7 +9,7 @@ import org.messaging.channel.publishsubscribe.local.SubClassification._
 import org.messaging.patterns.CompletableApp
 
 object SubClassificationDriver extends CompletableApp(6) {
-  val allSubsriber = system.actorOf(
+  val allSubscriber = system.actorOf(
     Props[AllMarketsSubscriber],
     "AllMarketsSubscriber")
 
@@ -23,11 +23,33 @@ object SubClassificationDriver extends CompletableApp(6) {
 
   val quotesBus = new QuotesEventBus
 
-  ???
+  quotesBus subscribe(allSubscriber, Market("quotes"))
+  quotesBus subscribe(nasdaqSubscriber, Market("quotes/NASDAQ"))
+  quotesBus subscribe(nyseSubscriber, Market("quotes/NYSE"))
+
+  quotesBus publish PriceQuoted(
+    Market("quotes/NYSE"),
+    'ORLC,
+    new Money("37.84"))
+
+  quotesBus publish PriceQuoted(
+    Market("quotes/NASDAQ"),
+    'MSFT,
+    new Money("37.16"))
+
+  quotesBus publish PriceQuoted(
+    Market("quotes/DAX"),
+    Symbol("SAP:GR"),
+    new Money("61.95"))
+
+  quotesBus publish PriceQuoted(
+    Market("quotes/NKY"),
+    Symbol("6701:JP"),
+    new Money("237"))
 
   awaitCompletion()
 
-  println("SubClassification: is completed.")
+  println("SubClassificationDriver: is completed.")
 }
 
 class QuotesEventBus extends EventBus with SubchannelClassification {
@@ -38,9 +60,17 @@ class QuotesEventBus extends EventBus with SubchannelClassification {
   override def classify(event: Event): Classifier =
     event.market
 
-  override def subclassification: Subclassification[Classifier] = ???
+  override def subclassification: Subclassification[Classifier] =
+    new Subclassification[Market] {
+      override def isEqual(subscribedToClassifier: Market, eventClassifier: Market): Boolean =
+        eventClassifier equals subscribedToClassifier
 
-  override def publish(event: Event, subscriber: Subscriber): Unit = ???
+      override def isSubclass(subscribedToClassifier: Market, eventClassifier: Market): Boolean =
+        subscribedToClassifier.name startsWith eventClassifier.name
+    }
+
+  override def publish(event: Event, subscriber: Subscriber): Unit =
+    subscriber ! event
 }
 
 class AllMarketsSubscriber extends Actor {

@@ -26,7 +26,9 @@ Reactive messaging patterns using Scala and Akka.
 1. **Point-to-Point Channel** - `org.messaging.channel.pointopoint`<br />
 ![Alt text](img/point_to_point_channel.png?raw=true)<br />
 
-2. _Publish-Subscribe Channel_
+2. **Publish-Subscribe Channel** - `org.messaging.channel.publishsubscribe`<br />
+![Alt text](img/publish_subscribe_channel.png?raw=true)<br />
+
 3. _Datatype Channel_
 4. _Invalid Message Channel_
 5. _Dead Letter Channel_
