@@ -29,7 +29,9 @@ Reactive messaging patterns using Scala and Akka.
 2. **Publish-Subscribe Channel** - `org.messaging.channel.publishsubscribe`<br />
 ![Alt text](img/publish_subscribe_channel.png?raw=true)<br />
 
-3. _Datatype Channel_
+3. **Datatype Channel** - `org.messaging.channel.datatype`<br />
+![Alt text](img/datatype_channel.png?raw=true)<br />
+
 4. _Invalid Message Channel_
 5. _Dead Letter Channel_
 6. _Guaranteed Delivery_

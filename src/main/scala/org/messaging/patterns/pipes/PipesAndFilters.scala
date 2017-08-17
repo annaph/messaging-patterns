@@ -7,7 +7,7 @@ case class ProcessIncomingOrder(orderInfo: Array[Byte])
 
 object PipesAndFiltersDriver extends CompletableApp(9) {
   val orderText = "(encryption)(certificate)<order id='123'>...</order>"
-  val rawOrderBytes = orderText.toCharArray().map(_.toByte)
+  val rawOrderBytes = orderText.toCharArray.map(_.toByte)
 
   val filter5 = system.actorOf(
     Props[OrderManagementSystem],
@@ -55,8 +55,8 @@ class Decrypter(nextFilter: ActorRef) extends Actor {
       val text = new String(message.orderInfo)
       println(s"Decrypter: processing $text")
 
-      val orderText = text replace ("(encryption)", "")
-      nextFilter ! ProcessIncomingOrder(orderText.toCharArray().map(_.toByte))
+      val orderText = text replace("(encryption)", "")
+      nextFilter ! ProcessIncomingOrder(orderText.toCharArray.map(_.toByte))
 
       PipesAndFiltersDriver.completedStep()
   }
@@ -68,8 +68,8 @@ class Authenticator(nextFilter: ActorRef) extends Actor {
       val text = new String(message.orderInfo)
       println(s"Authenticator: processing $text")
 
-      val orderText = text replace ("(certificate)", "")
-      nextFilter ! ProcessIncomingOrder(orderText.toCharArray().map(_.toByte))
+      val orderText = text replace("(certificate)", "")
+      nextFilter ! ProcessIncomingOrder(orderText.toCharArray.map(_.toByte))
 
       PipesAndFiltersDriver.completedStep()
   }
