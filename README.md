@@ -32,7 +32,9 @@ Reactive messaging patterns using Scala and Akka.
 3. **Datatype Channel** - `org.messaging.channel.datatype`<br />
 ![Alt text](img/datatype_channel.png?raw=true)<br />
 
-4. _Invalid Message Channel_
+4. **Invalid Message Channel** - `org.messaging.channel.invalid`<br />
+![Alt text](img/invalid_message_channel.png?raw=true)<br />
+
 5. _Dead Letter Channel_
 6. _Guaranteed Delivery_
 7. _Channel Adapter_
