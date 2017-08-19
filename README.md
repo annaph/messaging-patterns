@@ -20,8 +20,6 @@ Reactive messaging patterns using Scala and Akka.
 4. **Message Endpoint** - `org.messaging.patterns.endpoint`<br />
 ![Alt text](img/message_endpoint.png?raw=true)<br />
 
-5. ???
-
 ### Channel types
 1. **Point-to-Point Channel** - `org.messaging.channel.pointopoint`<br />
 ![Alt text](img/point_to_point_channel.png?raw=true)<br />
@@ -35,7 +33,9 @@ Reactive messaging patterns using Scala and Akka.
 4. **Invalid Message Channel** - `org.messaging.channel.invalid`<br />
 ![Alt text](img/invalid_message_channel.png?raw=true)<br />
 
-5. _Dead Letter Channel_
+5. **Dead Letter Channel** - `org.messaging.channel.deadletter`<br />
+![Alt text](img/dead_letter_channel.png?raw=true)<br />
+
 6. _Guaranteed Delivery_
 7. _Channel Adapter_
 8. _Message Bridge_
