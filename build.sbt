@@ -8,6 +8,10 @@ scalacOptions ++= Seq(
   "-feature")
 
 libraryDependencies ++= Seq(
-  "com.typesafe.akka" %% "akka-actor" % "2.5.3")
+  "com.typesafe.akka" %% "akka-actor" % "2.5.3",
+  "com.typesafe.akka" %% "akka-persistence" % "2.5.3",
+  "org.iq80.leveldb" % "leveldb" % "0.9",
+  "org.fusesource.leveldbjni" % "leveldbjni-all" % "1.8",
+  "com.google.protobuf" % "protobuf-java" % "3.4.0")
 
 fork := true
