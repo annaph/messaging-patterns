@@ -36,7 +36,9 @@ Reactive messaging patterns using Scala and Akka.
 5. **Dead Letter Channel** - `org.messaging.channel.deadletter`<br />
 ![Alt text](img/dead_letter_channel.png?raw=true)<br />
 
-6. _Guaranteed Delivery_
+6. **Guaranteed Delivery** - `org.messaging.channel.guaranteeddelivery`<br />
+![Alt text](img/guaranteed_delivery.png?raw=true)<br />
+
 7. _Channel Adapter_
 8. _Message Bridge_
 9. _Message Bus_
