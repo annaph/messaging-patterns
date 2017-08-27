@@ -12,6 +12,7 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-persistence" % "2.5.3",
   "org.iq80.leveldb" % "leveldb" % "0.7",
   "org.fusesource.leveldbjni" % "leveldbjni-all" % "1.8",
-  "com.google.protobuf" % "protobuf-java" % "3.4.0")
+  "com.google.protobuf" % "protobuf-java" % "3.4.0",
+  "org.apache.activemq" % "activemq-broker" % "5.14.5")
 
 fork := true
