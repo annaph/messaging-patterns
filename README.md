@@ -39,6 +39,8 @@ Reactive messaging patterns using Scala and Akka.
 6. **Guaranteed Delivery** - `org.messaging.channel.guaranteeddelivery`<br />
 ![Alt text](img/guaranteed_delivery.png?raw=true)<br />
 
-7. _Channel Adapter_
+7. **Channel Adapter** - `org.messaging.channel.channeladapter`<br />
+![Alt text](img/channel_adpater.png?raw=true)<br />
+
 8. _Message Bridge_
 9. _Message Bus_
